@@ -3,7 +3,6 @@
 
  Discipline Priest Atonement Tracker (Patch 7.0.3)
   by enragednuke#1402 (or Priestîsm on US-Sargeras)
-  with help of users on the HowToPriest Discord (Alyce)
   
 Part 2 of 2: Mana cost display
 

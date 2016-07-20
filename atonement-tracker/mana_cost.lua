@@ -16,7 +16,7 @@ If using Demonic Phylactery, this will not work in instances where downscaling o
 --]]
 
 function()
-    local dpManaReduction = 577; -- Change this to your Demonic Phylactery's mana reduction if desired
+    local dpManaReduction = 0; -- Change this to your Demonic Phylactery's mana reduction if desired
     
     local stacks = GetSpellCount(200829);
     local PLEA_BASE_COST = 0.36 / 100 * UnitManaMax("player");

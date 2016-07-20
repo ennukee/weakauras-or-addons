@@ -21,7 +21,6 @@ function()
     local PLEA_BASE_COST = 0.36 / 100 * UnitManaMax("player");
     local PWR_BASE_COST = 6.5 / 100 * UnitManaMax("player"); -- Power Word: Radiance
     local DP_IS_EQUIPPED = IsEquippedItem("Demonic Phylactery");
-    en_atonement_plea_better = true;
     
     if DP_IS_EQUIPPED then
         if dpManaReduction == 0 then
@@ -88,3 +87,4 @@ function()
     return result;
     
 end
+

@@ -15,7 +15,7 @@ If using Demonic Phylactery, this will not work in instances where downscaling o
 --]]
 
 function()
-    local dpManaReduction = 0; -- Change this to your Demonic Phylactery's mana reduction if desired
+    local dpManaReduction = 577; -- Change this to your Demonic Phylactery's mana reduction if desired
     
     local stacks = GetSpellCount(200829);
     local PLEA_BASE_COST = 0.36 / 100 * UnitManaMax("player");
@@ -65,7 +65,7 @@ function()
     local updatedPWRCost = PWR_BASE_COST - dpManaReduction;
     
     -- Check for important mana-reduction buffs
-    local HAS_SYMBOL = UnitBuff("player","Symbol of Hope")
+    local HAS_SYMBOL = UnitBuff("player", "Symbol of Hope")
     local HAS_PI = UnitBuff("player", "Power Infusion")
     
     -- Update mana costs of Plea/PW:R if Power Infusion is active 
@@ -74,11 +74,11 @@ function()
     
     -- Special label for telling the user it may not be 100% accurate w/ DP equipped (as said at start)
     local result = ( DP_IS_EQUIPPED and "~" or "" ) .. manaCost;
-    result = HAS_PI and (result.." |c00ff5500(PI)|r") or result -- Attach PI label if active
+    result = HAS_PI and "|c00ff5500"..result.."|r" or result
     
     -- Various cases affecting the output directly
     if manaCost <= 0 or HAS_SYMBOL then -- (aka no cost situations)
-        result = HAS_SYMBOL and "No cost\n|c00ffff99(Symbol)|r" or "No cost"
+        result = HAS_SYMBOL and "|c00ffff80No cost|r" or "No cost"
     elseif manaCost > updatedPWRCost / 3 then -- Since PW:R can apply 3 atonements
         result = result .. "\n|c00ff3300(PW:R)|r";
     end
@@ -87,4 +87,3 @@ function()
     return result;
     
 end
-

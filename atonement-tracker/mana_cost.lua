@@ -67,6 +67,7 @@ function()
     -- Check for important mana-reduction buffs
     local HAS_SYMBOL = UnitBuff("player", "Symbol of Hope")
     local HAS_PI = UnitBuff("player", "Power Infusion")
+    local HAS_INRVT = UnitBuff("player", "Innervate")
     
     -- Update mana costs of Plea/PW:R if Power Infusion is active 
     manaCost = HAS_PI and manaCost*0.8 or manaCost 
@@ -77,8 +78,12 @@ function()
     result = HAS_PI and "|c00ff5500"..result.."|r" or result
     
     -- Various cases affecting the output directly
-    if manaCost <= 0 or HAS_SYMBOL then -- (aka no cost situations)
-        result = HAS_SYMBOL and "|c00ffff80No cost|r" or "No cost"
+    if manaCost <= 0 then -- (aka no cost situations)
+        result = "No cost"
+    elseif HAS_SYMBOL then
+        result = "|c00ffff80No cost|r"
+    elseif HAS_INRVT then
+        result = "|c0066ff33No cost|r"
     elseif manaCost > updatedPWRCost / 3 then -- Since PW:R can apply 3 atonements
         result = result .. "\n|c00ff3300(PW:R)|r";
     end
